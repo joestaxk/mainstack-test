@@ -3,6 +3,7 @@ import Greeting from "./greeting";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import TopChart from "./topChart";
+import Image from "next/image";
 
 
 
@@ -17,20 +18,23 @@ export default function DashBoard() {
   const { data, error } = useSWR('https://fe-task-api.mainstack.io/', fetcher)
   return (
     <>
-      <main className="fixed right-0 top-0 flex flex-col items-center h-[100vh]" style={{width: "calc(100vw - 304px)"}}>
-        <div className="w-full p-5 pl-0 opacity-90 backdrop-blur-2xl bg-white">
-           <div className="font-bold text-[20px] ml-[3rem]">Dashboard</div>
+      <main id="Dashboard" className="fixed right-0 top-0 flex flex-col items-center h-[100vh]" style={{width: "calc(100vw - 304px)"}}>
+        <div className="flex items-center lg:block w-full p-3 pl-0 backdrop-blur-2xl bg-white">
+            <div className="flex items-center ml-3 lg:hidden">
+               <Image alt={"sidebar icon"} src={"mainstack-logo.svg"} width={50} height={20 } />
+            </div>
+           <div className="dashboard-text font-bold text-[20px] lg:ml-[3rem] ml-[2rem]">Dashboard</div>
         </div> 
         
-        <div className="w-full h-[100vh] pb-9 pl-[3rem] pr-[3rem] overflow-y-scroll">
+        <div className="dashboard-chart w-full h-[100vh] pb-9 pl-[3rem] pr-[3rem] overflow-y-scroll flex flex-col">
            <Greeting />
-           { 
-               data ?  <Chart data={data} /> : "loading.."
+           {  
+               data ?  <Chart data={data} /> : <h4>Loading...</h4>
 
            }
 
            { 
-               data ?  <TopChart res={data} /> : "loading.."
+               data ?  <TopChart res={data} /> : ""
 
            }
         </div>

@@ -39,10 +39,10 @@ export default function TopChart({res}: {res: resultType}) {
     }, [res, data])
 
     return (
-       <main className="mt-8 flex flex-wrap justify-between">
+       <main className="mt-8 flex flex-wrap gap-3 justify-between">
         {
            populateTopChartData.map(({id, title, linktext, link}: any, i:number) => (
-             <div key={i.toString()} className="w-[49%] border-[1px] rounded-xl border-[#EFF1F6]"> 
+             <div key={i.toString()} className="w-full lg:w-[49%] border-[1px] rounded-xl border-[#EFF1F6]"> 
                  <div className="flex justify-between items-center min-w-[100%]  p-4">
                       <h2>{title}</h2>
                       <div className="">
@@ -128,8 +128,8 @@ function TopLocation({locationdata, flag}: {locationdata: {country: string, coun
 
     return (
        <>
-          <main className="flex justify-around items-center">
-             <ul className="w-[50%] p-4">
+          <main className="sm:flex justify-around items-center">
+             <ul className="sm:w-[50%] w-full p-4">
                {
                    memoized().map(({country, percent, color, count, flagId}, i) => (
                       <li key={i.toString()} className="flex  mb-3 text-[#131316]">
@@ -145,7 +145,7 @@ function TopLocation({locationdata, flag}: {locationdata: {country: string, coun
                }
              </ul>
 
-             <div className="w-[40%]">
+             <div className="w-[40%] p-3 md:p-0">
                 <Doughnut data={data} options={options} width={50} height={50} />
              </div>
           </main>
@@ -213,8 +213,8 @@ function TopReferral({referraldata}: {referraldata: {source: string, count: numb
      }
     return (
        <>
-          <main className="flex justify-around items-center">
-             <ul className="w-[50%] p-4">
+          <main className="md:flex justify-around items-center">
+             <ul className="md:w-[50%] w-full p-4">
                {
                    memoized().map(({source, percent, color, count}, i) => (
                       <li key={i.toString()} className="flex  mb-3 text-[#131316]">
@@ -231,7 +231,7 @@ function TopReferral({referraldata}: {referraldata: {source: string, count: numb
                }
              </ul>
 
-             <div className="w-[40%]">
+             <div className="w-[40%] p-3 md:p-0">
                 <Doughnut data={data} options={options} width={50} height={50} />
              </div>
           </main>

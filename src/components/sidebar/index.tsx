@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ActiveLink from "./activeLink";
-
+import { motion } from "framer-motion";
 const Links = {
     default: [
       { logo: "dashboard.svg", title: "Dashboard", href: "/dashboard"},
@@ -23,12 +23,15 @@ const Links = {
 export default function SideBar() {
   return (
     <>
-      <main className="fixed left-0 top-0 min-w-[304px] overflow-y-scroll h-[100vh] pb-11 border-r-[1px] border-[#EFF1F6]">
+      <main className="fixed left-0 hidden lg:block top-0 min-w-[304px] overflow-y-scroll h-[100vh] border-r-[1px] border-[#EFF1F6]">
          <div className="h-[120px] flex items-center ml-8">
            <Image alt={"sidebar icon"} src={"mainstack-logo.svg"} width={50} height={20 } />
          </div>
 
-         <ul className="">
+         <motion.ul
+          initial={{opacity: 0}}
+          animate={{ opacity: 1 }}
+          transition={{ delay: .5 }}className="">
           <>
              { 
                Links.default.map(({logo, title, href}: {logo: string, title: string, href: string}, i:number) => (
@@ -76,7 +79,7 @@ export default function SideBar() {
                 </div>
               </div>
            </>
-      </ul>
+      </motion.ul>
       </main>
     </>
   )

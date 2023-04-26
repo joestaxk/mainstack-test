@@ -20,3 +20,14 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
 }
+
+@media screen and (max-width: 1024px) {
+  #Dashboard{
+     min-width: 100vw;
+     position: relative;
+  }
+
+  #Dashboard .dashboard-chart {padding: 1rem}
+  #Dashboard .dashboard-text {margin-left: 0; padding-left: 1rem}
+}
+
