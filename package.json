@@ -25,5 +25,8 @@
     "swr": "^2.1.4",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/react-world-flags": "^1.4.2"
   }
 }
